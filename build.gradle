@@ -2,6 +2,10 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
 }
+plugins {
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.6.3'
+}
 
 group 'net.jspiner.epub-stream'
 version '0.0.1'
@@ -24,4 +28,10 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
 }
