@@ -12,6 +12,10 @@ version '0.0.1'
 
 sourceCompatibility = 1.8
 
+allprojects {
+    apply plugin: "jacoco"
+}
+
 repositories {
     mavenCentral()
 }
@@ -37,4 +41,5 @@ jacocoTestReport {
 }
 coveralls {
     jacocoReportPath 'build/reports/jacoco/test/jacocoTestReport.xml'
+    sourceDirs = files(allprojects.sourceSets.main.allSource.srcDirs).files.absolutePath
 }
