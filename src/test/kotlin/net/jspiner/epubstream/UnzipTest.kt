@@ -1,3 +1,5 @@
+package net.jspiner.epubstream
+
 import org.apache.commons.io.FileUtils
 import org.apache.commons.io.filefilter.TrueFileFilter
 import org.junit.After

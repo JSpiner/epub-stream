@@ -1,3 +1,6 @@
+package net.jspiner.epubstream
+
+import net.jspiner.epubstream.EpubStream
 import org.junit.Test
 import java.io.File
 
@@ -8,7 +11,7 @@ class EpubStreamInitTest {
         val dummyFile = File("file://dummy/file")
         EpubStream(dummyFile)
     }
-    
+
     @Test
     fun getMimeTypeSuccessTest() {
         val dummyFile = File("file://dummy/file")

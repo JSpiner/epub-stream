@@ -1,3 +1,5 @@
+package net.jspiner.epubstream
+
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.io.BufferedOutputStream

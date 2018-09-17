@@ -1,4 +1,4 @@
-package dto
+package net.jspiner.epubstream.dto
 
 import java.util.*
 import kotlin.collections.HashMap
