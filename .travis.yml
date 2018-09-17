@@ -2,4 +2,4 @@ language: java
 install: gradle wrapper --gradle-version 4.8
 jdk:
   - oraclejdk8
-script: make test
+script: ./gradlew test
