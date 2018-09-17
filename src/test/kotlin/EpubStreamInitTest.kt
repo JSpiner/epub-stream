@@ -8,16 +8,7 @@ class EpubStreamInitTest {
         val dummyFile = File("file://dummy/file")
         EpubStream(dummyFile)
     }
-
-    @Test
-    fun unzipSuccessTest() {
-        val dummyFile = File("file://dummy/file")
-        val epubStream = EpubStream(dummyFile)
-        epubStream.unzip()
-                .test()
-                .assertResult()
-    }
-
+    
     @Test
     fun getMimeTypeSuccessTest() {
         val dummyFile = File("file://dummy/file")
