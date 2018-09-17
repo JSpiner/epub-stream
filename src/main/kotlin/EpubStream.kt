@@ -7,7 +7,7 @@ import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
-class EpubStream(val file : File) {
+class EpubStream(val file: File) {
 
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
@@ -38,23 +38,23 @@ class EpubStream(val file : File) {
         outputStream.close()
     }
 
-    fun getMimeType() : Single<Any> {
+    fun getMimeType(): Single<Any> {
         return Single.just(1)
     }
 
-    fun getContainer() : Single<Any> {
+    fun getContainer(): Single<Any> {
         return Single.just(1)
     }
 
-    fun getOpf() : Single<Any> {
+    fun getOpf(): Single<Any> {
         return Single.just(1)
     }
 
-    fun getToc() : Single<Any> {
+    fun getToc(): Single<Any> {
         return Single.just(1)
     }
 
-    fun getFile() : Single<Any> {
+    fun getFile(): Single<Any> {
         return Single.just(1)
     }
 
