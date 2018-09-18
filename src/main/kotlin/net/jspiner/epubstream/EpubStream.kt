@@ -96,8 +96,9 @@ class EpubStream(val file: File) {
             Single.just(opf)
         } else {
             getContainer()
-                    .zipWith(getExtractedDirectory(), BiFunction { container: Container, file: File -> container to file })
-                    .map { pair -> pair.second.resolve(pair.first.rootFiles[0].fullPath) }
+                    .zipWith(getExtractedDirectory(), BiFunction { container: Container, file: File ->
+                        file.resolve(container.rootFiles[0].fullPath)
+                    })
                     .map { parseToDocument(it) }
                     .map { parsePackage(it) }
         }
