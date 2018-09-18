@@ -101,6 +101,7 @@ class EpubStream(val file: File) {
                     })
                     .map { parseToDocument(it) }
                     .map { parsePackage(it) }
+                    .doOnSuccess { this@EpubStream.opf = it }
         }
     }
 
