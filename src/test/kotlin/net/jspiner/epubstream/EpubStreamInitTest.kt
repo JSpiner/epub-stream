@@ -13,15 +13,6 @@ class EpubStreamInitTest {
     }
 
     @Test
-    fun getMimeTypeSuccessTest() {
-        val dummyFile = File("file://dummy/file")
-        val epubStream = EpubStream(dummyFile)
-        epubStream.getMimeType()
-                .test()
-                .assertResult(1)
-    }
-
-    @Test
     fun getContainerSuccessTest() {
         val dummyFile = File("file://dummy/file")
         val epubStream = EpubStream(dummyFile)

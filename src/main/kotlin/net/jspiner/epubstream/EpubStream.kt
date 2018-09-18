@@ -2,16 +2,22 @@ package net.jspiner.epubstream
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import net.jspiner.epubstream.dto.MimeType
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.nio.file.Files
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
 class EpubStream(val file: File) {
 
+    private val MIMETYPE_FILE_NAME = "mimetype"
+
     private var extractedDirectory: File? = null
+
+    private var mimeType: MimeType? = null
 
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
@@ -51,8 +57,16 @@ class EpubStream(val file: File) {
         }
     }
 
-    fun getMimeType(): Single<Any> {
-        return Single.just(1)
+    fun getMimeType(): Single<MimeType> {
+        return if (mimeType != null) {
+            Single.just(mimeType)
+        } else {
+            getExtractedDirectory()
+                    .map { it.toPath().resolve(MIMETYPE_FILE_NAME) }
+                    .map { Files.readAllLines(it).joinToString() }
+                    .map { MimeType(it) }
+                    .doOnSuccess { this@EpubStream.mimeType = it }
+        }
     }
 
     fun getContainer(): Single<Any> {
