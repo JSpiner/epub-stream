@@ -5,16 +5,13 @@ import io.reactivex.Single
 import net.jspiner.epubstream.dto.Container
 import net.jspiner.epubstream.dto.MimeType
 import net.jspiner.epubstream.dto.RootFile
-import org.w3c.dom.Document
-import org.w3c.dom.NodeList
-import org.xml.sax.InputSource
-import java.io.*
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
-import javax.xml.parsers.DocumentBuilderFactory
-import javax.xml.xpath.XPathConstants
-import javax.xml.xpath.XPathFactory
 
 
 class EpubStream(val file: File) {
@@ -90,24 +87,14 @@ class EpubStream(val file: File) {
                         List(nodeList.length) { it -> nodeList.item(it) }
                                 .map { node ->
                                     RootFile(
-                                            node.attributes.getNamedItem("full-path").nodeValue,
-                                            node.attributes.getNamedItem("media-type").nodeValue
+                                            node.getProperty("full-path"),
+                                            node.getProperty("media-type")
                                     )
                                 }
                     }
                     .map { Container(it.toTypedArray()) }
                     .doOnSuccess { this@EpubStream.container = it }
         }
-    }
-
-    private fun parseToDocument(file: File) : Document {
-        val inputSource = InputSource(FileReader(file))
-        return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
-    }
-
-    private fun evaluateNodeList(document: Document, expression: String): NodeList {
-        val xPath = XPathFactory.newInstance().newXPath()
-        return xPath.compile(expression).evaluate(document, XPathConstants.NODESET) as NodeList
     }
 
     fun getOpf(): Single<Any> {
