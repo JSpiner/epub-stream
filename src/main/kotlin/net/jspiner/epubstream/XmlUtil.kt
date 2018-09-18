@@ -21,6 +21,11 @@ fun evaluateNodeList(document: Document, expression: String): NodeList {
     return xPath.compile(expression).evaluate(document, XPathConstants.NODESET) as NodeList
 }
 
-fun Node.getProperty(propertyName: String) : String {
-    return this.attributes.getNamedItem(propertyName).nodeValue
+fun evaluateNode(document: Document, expression: String): Node? {
+    val xPath = XPathFactory.newInstance().newXPath()
+    return xPath.compile(expression).evaluate(document, XPathConstants.NODE) as? Node
+}
+
+fun Node.getProperty(propertyName: String) : String? {
+    return this.attributes.getNamedItem(propertyName)?.nodeValue
 }
