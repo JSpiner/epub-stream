@@ -6,7 +6,7 @@ data class Guide(
 )
 
 data class Reference(
-        var type: String,
-        var title: String,
+        var type: String?,
+        var title: String?,
         var href: String
 )
