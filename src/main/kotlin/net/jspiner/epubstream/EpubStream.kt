@@ -2,22 +2,30 @@ package net.jspiner.epubstream
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import net.jspiner.epubstream.dto.Container
 import net.jspiner.epubstream.dto.MimeType
-import java.io.BufferedOutputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import net.jspiner.epubstream.dto.RootFile
+import org.w3c.dom.Document
+import org.w3c.dom.NodeList
+import org.xml.sax.InputSource
+import java.io.*
 import java.nio.file.Files
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
+import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.xpath.XPathConstants
+import javax.xml.xpath.XPathFactory
+
 
 class EpubStream(val file: File) {
 
     private val MIMETYPE_FILE_NAME = "mimetype"
+    private val CONTAINER_FILE_NAME = "META-INF/container.xml"
 
     private var extractedDirectory: File? = null
 
     private var mimeType: MimeType? = null
+    private var container: Container? = null
 
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
@@ -69,8 +77,37 @@ class EpubStream(val file: File) {
         }
     }
 
-    fun getContainer(): Single<Any> {
-        return Single.just(1)
+    fun getContainer(): Single<Container> {
+        return if (container != null) {
+            Single.just(container)
+        } else {
+            getMimeType()
+                    .flatMap { getExtractedDirectory() }
+                    .map { it.resolve(CONTAINER_FILE_NAME) }
+                    .map { parseToDocument(it) }
+                    .map { evaluateNodeList(it, "/container/rootfiles/rootfile") }
+                    .map { nodeList ->
+                        List(nodeList.length) { it -> nodeList.item(it) }
+                                .map { node ->
+                                    RootFile(
+                                            node.attributes.getNamedItem("full-path").nodeValue,
+                                            node.attributes.getNamedItem("media-type").nodeValue
+                                    )
+                                }
+                    }
+                    .map { Container(it.toTypedArray()) }
+                    .doOnSuccess { this@EpubStream.container = it }
+        }
+    }
+
+    private fun parseToDocument(file: File) : Document {
+        val inputSource = InputSource(FileReader(file))
+        return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
+    }
+
+    private fun evaluateNodeList(document: Document, expression: String): NodeList {
+        val xPath = XPathFactory.newInstance().newXPath()
+        return xPath.compile(expression).evaluate(document, XPathConstants.NODESET) as NodeList
     }
 
     fun getOpf(): Single<Any> {
