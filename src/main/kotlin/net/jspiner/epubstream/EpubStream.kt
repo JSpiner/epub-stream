@@ -43,6 +43,14 @@ class EpubStream(val file: File) {
         outputStream.close()
     }
 
+    fun getExtractedDirectory(): Single<File> {
+        return if (extractedDirectory != null) {
+            Single.just(extractedDirectory)
+        } else {
+            unzip().toSingle { extractedDirectory }
+        }
+    }
+
     fun getMimeType(): Single<Any> {
         return Single.just(1)
     }

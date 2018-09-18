@@ -78,4 +78,35 @@ class UnzipTest {
                 }
     }
 
+    @Test
+    fun unzipPathTest() {
+        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        epubStream.unzip()
+                .toSingle { epubStream.getExtractedDirectory() }
+                .flatMap { it -> it }
+                .map { it -> it.path }
+                .test()
+                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+    }
+
+    @Test
+    fun withoutUnzipPathTest() {
+        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        epubStream.getExtractedDirectory()
+                .map { it -> it.path }
+                .test()
+                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+    }
+
+    @Test
+    fun withoutUnzipPathAndOutputTest() {
+        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        epubStream.getExtractedDirectory()
+                .map { it -> it.path }
+                .test()
+                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+
+        unzipOutputMatchTest()
+    }
+
 }
