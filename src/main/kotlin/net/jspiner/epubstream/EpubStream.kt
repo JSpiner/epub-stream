@@ -11,6 +11,8 @@ import java.util.zip.ZipInputStream
 
 class EpubStream(val file: File) {
 
+    private var extractedDirectory: File? = null
+
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
 
@@ -26,6 +28,7 @@ class EpubStream(val file: File) {
             }
             inputStream.close()
 
+            extractedDirectory = File(outputPath)
             emitter.onComplete()
         }
     }
