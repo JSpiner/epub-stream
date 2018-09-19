@@ -5,13 +5,16 @@ import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import net.jspiner.epubstream.dto.Container
 import net.jspiner.epubstream.dto.MimeType
+import net.jspiner.epubstream.dto.Ncx
 import net.jspiner.epubstream.dto.Package
 import net.jspiner.epubstream.parser.parseContainer
+import net.jspiner.epubstream.parser.parseNcx
 import net.jspiner.epubstream.parser.parsePackage
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.lang.RuntimeException
 import java.nio.file.Files
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
@@ -27,6 +30,7 @@ class EpubStream(val file: File) {
     private var mimeType: MimeType? = null
     private var container: Container? = null
     private var opf: Package? = null
+    private var ncx: Ncx? = null
 
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
@@ -105,8 +109,25 @@ class EpubStream(val file: File) {
         }
     }
 
-    fun getToc(): Single<Any> {
-        return Single.just(1)
+    fun getToc(): Single<Ncx> {
+        return if (ncx != null) {
+            Single.just(ncx)
+        } else {
+            getOpf()
+                    .map { opf ->
+                        val tocId = opf.spine.toc
+                        for (item in opf.manifest.items) {
+                            if (item.id.equals(tocId)) {
+                                return@map item.href
+                            }
+                        }
+                        throw RuntimeException("$tocId not exist in spine")
+                    }
+                    .flatMap { href -> getExtractedDirectory().map { it.resolve(href) } }
+                    .map { parseToDocument(it) }
+                    .map { parseNcx(it) }
+                    .doOnSuccess { this@EpubStream.ncx = it }
+        }
     }
 
     fun getFile(): Single<Any> {

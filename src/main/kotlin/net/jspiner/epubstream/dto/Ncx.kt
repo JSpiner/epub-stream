@@ -4,6 +4,6 @@ package net.jspiner.epubstream.dto
 data class Ncx(
         var head: Head,
         var docTitle: DocTitle,
-        var docAuthor: DocAuthor,
+        var docAuthor: DocAuthor?,
         var navMap: NavMap
 )

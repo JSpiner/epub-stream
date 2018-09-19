@@ -4,6 +4,5 @@ package net.jspiner.epubstream.dto
 data class DocTitle(
         var id: String?,
         var text: String,
-        var audio: Audio?,
         var img: Image?
 )
