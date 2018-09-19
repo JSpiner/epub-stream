@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="PrimaryID">
+
+
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+		<dc:title>Beyond Good and Evil</dc:title>
+<dc:language>en</dc:language>
+<dc:identifier id="PrimaryID" opf:scheme="URI">http://beyondgoodandevil.pressbooks.com</dc:identifier>
+<dc:description>&lt;p&gt;In &lt;em&gt;Beyond Good and Evil,&lt;/em&gt; Nietzsche accuses past philosophers of lacking critical sense and blindly accepting dogmatic premises in their consideration of morality. Specifically, he accuses them of founding grand metaphysical systems upon the faith that the good man is the opposite of the evil man, rather than just a different expression of the same basic impulses that find more direct expression in the evil man. The work moves into the realm "beyond good and evil" in the sense of leaving behind the traditional morality which Nietzsche subjects to a destructive critique in favour of what he regards as an affirmative approach that fearlessly confronts the perspectival nature of knowledge and the perilous condition of the modern individual.(from Wikipedia)&lt;/p&gt;&lt;div style="text-align: center;"&gt;&lt;p&gt;Download: &lt;br /&gt;&lt;strong&gt;&lt;a href=""&gt;PDF&lt;/a&gt; | &lt;a href=""&gt;EPUB&lt;/a&gt; | &lt;a href=""&gt;MOBI&lt;/a&gt; | &lt;a href=""&gt;3-file Zip&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;</dc:description>
+<dc:creator opf:role="aut" opf:file-as="Nietzsche, Friedrich">Friedrich Nietzsche</dc:creator>
+<meta name="cover" content="cover-image" />
+	</metadata>
+
+
+	<manifest>
+		<item id="front-cover" href="OEBPS/front-cover.html" media-type="application/xhtml+xml" />
+<item id="title-page" href="OEBPS/title-page.html" media-type="application/xhtml+xml" />
+<item id="copyright" href="OEBPS/copyright.html" media-type="application/xhtml+xml" />
+<item id="table-of-contents" href="OEBPS/table-of-contents.html" media-type="application/xhtml+xml" />
+<item id="front-matter-001" href="OEBPS/front-matter-001-preface.html" media-type="application/xhtml+xml" />
+<item id="pressbooks-promo" href="OEBPS/pressbooks-promo.html" media-type="application/xhtml+xml" />
+<item id="chapter-001" href="OEBPS/chapter-001-chapter-i.html" media-type="application/xhtml+xml" />
+<item id="chapter-002" href="OEBPS/chapter-002-chapter-ii.html" media-type="application/xhtml+xml" />
+<item id="chapter-003" href="OEBPS/chapter-003-chapter-iii.html" media-type="application/xhtml+xml" />
+<item id="chapter-004" href="OEBPS/chapter-004-chapter-iv.html" media-type="application/xhtml+xml" />
+<item id="chapter-005" href="OEBPS/chapter-005-chapter-v.html" media-type="application/xhtml+xml" />
+<item id="chapter-006" href="OEBPS/chapter-006-chapter-vi.html" media-type="application/xhtml+xml" />
+<item id="chapter-007" href="OEBPS/chapter-007-chapter-vii.html" media-type="application/xhtml+xml" />
+<item id="chapter-008" href="OEBPS/chapter-008-chapter-viii.html" media-type="application/xhtml+xml" />
+<item id="chapter-009" href="OEBPS/chapter-009-chapter-ix.html" media-type="application/xhtml+xml" />
+<item id="back-matter-001" href="OEBPS/back-matter-001-from-the-heights.html" media-type="application/xhtml+xml" />
+<item id="media-Lato-Black" href="OEBPS/assets/Lato-Black.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-BlackItalic" href="OEBPS/assets/Lato-BlackItalic.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-Bold" href="OEBPS/assets/Lato-Bold.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-BoldItalic" href="OEBPS/assets/Lato-BoldItalic.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-Italic" href="OEBPS/assets/Lato-Italic.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-Light" href="OEBPS/assets/Lato-Light.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-LightItalic" href="OEBPS/assets/Lato-LightItalic.ttf" media-type="application/x-font-ttf" />
+<item id="media-Lato-Regular" href="OEBPS/assets/Lato-Regular.ttf" media-type="application/x-font-ttf" />
+<item id="cover-image" href="OEBPS/assets/beyondgoogandevil1.jpg" media-type="image/jpeg" />
+<item id="media-pressbooks-promo" href="OEBPS/assets/pressbooks-promo.png" media-type="image/png" />
+		<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+		<item id="stylesheet" href="OEBPS/galbraith-color.css"  media-type="text/css" />	</manifest>
+
+
+	<spine toc="ncx">
+		<itemref idref="front-cover" linear="no" />
+<itemref idref="title-page" linear="yes" />
+<itemref idref="copyright" linear="yes" />
+<itemref idref="table-of-contents" linear="yes" />
+<itemref idref="front-matter-001" linear="yes" />
+<itemref idref="pressbooks-promo" linear="yes" />
+<itemref idref="chapter-001" linear="yes" />
+<itemref idref="chapter-002" linear="yes" />
+<itemref idref="chapter-003" linear="yes" />
+<itemref idref="chapter-004" linear="yes" />
+<itemref idref="chapter-005" linear="yes" />
+<itemref idref="chapter-006" linear="yes" />
+<itemref idref="chapter-007" linear="yes" />
+<itemref idref="chapter-008" linear="yes" />
+<itemref idref="chapter-009" linear="yes" />
+<itemref idref="back-matter-001" linear="yes" />
+	</spine>
+
+
+	<guide>
+		<reference type="toc" title="Table of Contents" href="OEBPS/table-of-contents.html" />
+		<reference type="cover" title="cover" href="OEBPS/front-cover.html" />
+		<reference type="text" title="start" href="OEBPS/front-matter-001-preface.html" />
+	</guide>
+
+
+</package>

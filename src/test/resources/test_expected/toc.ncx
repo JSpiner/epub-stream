@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN"
+"http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
+
+<ncx version="2005-1" xml:lang="en" xmlns="http://www.daisy.org/z3986/2005/ncx/">
+
+	<head>
+		<!-- The following four metadata items are required for all NCX documents,
+		including those conforming to the relaxed constraints of OPS 2.0 -->
+
+		<meta name="dtb:uid" content="http://beyondgoodandevil.pressbooks.com" /> <!-- same as in .opf -->
+		<meta name="dtb:depth" content="2"/> <!-- 1 or higher -->
+		<meta name="dtb:totalPageCount" content="0"/> <!-- must be 0 -->
+		<meta name="dtb:maxPageNumber" content="0"/> <!-- must be 0 -->
+	</head>
+
+	<docTitle>
+		<text>Beyond Good and Evil</text>
+	</docTitle>
+
+		<docAuthor>
+		<text>Friedrich Nietzsche</text>
+	</docAuthor>
+	
+	<navMap>
+		
+					<navPoint id="front-cover" playOrder="1">
+					<navLabel><text>Cover</text></navLabel>
+					<content src="OEBPS/front-cover.html" />
+					</navPoint>
+					<navPoint id="title-page" playOrder="2">
+					<navLabel><text>Title Page</text></navLabel>
+					<content src="OEBPS/title-page.html" />
+					</navPoint>
+					<navPoint id="copyright" playOrder="3">
+					<navLabel><text>Copyright</text></navLabel>
+					<content src="OEBPS/copyright.html" />
+					</navPoint>
+					<navPoint id="table-of-contents" playOrder="4">
+					<navLabel><text>Table Of Contents</text></navLabel>
+					<content src="OEBPS/table-of-contents.html" />
+					</navPoint>
+					<navPoint id="front-matter-001" playOrder="5">
+					<navLabel><text>Preface</text></navLabel>
+					<content src="OEBPS/front-matter-001-preface.html" />
+					</navPoint>
+					<navPoint id="pressbooks-promo" playOrder="6">
+					<navLabel><text>Make your own books using PressBooks.com</text></navLabel>
+					<content src="OEBPS/pressbooks-promo.html" />
+					</navPoint>
+					<navPoint id="chapter-001" playOrder="7">
+					<navLabel><text>Chapter I</text></navLabel>
+					<content src="OEBPS/chapter-001-chapter-i.html" />
+					</navPoint>
+					<navPoint id="chapter-002" playOrder="8">
+					<navLabel><text>Chapter II</text></navLabel>
+					<content src="OEBPS/chapter-002-chapter-ii.html" />
+					</navPoint>
+					<navPoint id="chapter-003" playOrder="9">
+					<navLabel><text>Chapter III</text></navLabel>
+					<content src="OEBPS/chapter-003-chapter-iii.html" />
+					</navPoint>
+					<navPoint id="chapter-004" playOrder="10">
+					<navLabel><text>Chapter IV</text></navLabel>
+					<content src="OEBPS/chapter-004-chapter-iv.html" />
+					</navPoint>
+					<navPoint id="chapter-005" playOrder="11">
+					<navLabel><text>Chapter V</text></navLabel>
+					<content src="OEBPS/chapter-005-chapter-v.html" />
+					</navPoint>
+					<navPoint id="chapter-006" playOrder="12">
+					<navLabel><text>Chapter VI</text></navLabel>
+					<content src="OEBPS/chapter-006-chapter-vi.html" />
+					</navPoint>
+					<navPoint id="chapter-007" playOrder="13">
+					<navLabel><text>Chapter VII</text></navLabel>
+					<content src="OEBPS/chapter-007-chapter-vii.html" />
+					</navPoint>
+					<navPoint id="chapter-008" playOrder="14">
+					<navLabel><text>Chapter VIII</text></navLabel>
+					<content src="OEBPS/chapter-008-chapter-viii.html" />
+					</navPoint>
+					<navPoint id="chapter-009" playOrder="15">
+					<navLabel><text>Chapter IX</text></navLabel>
+					<content src="OEBPS/chapter-009-chapter-ix.html" />
+					</navPoint>
+					<navPoint id="back-matter-001" playOrder="16">
+					<navLabel><text>From the Heights</text></navLabel>
+					<content src="OEBPS/back-matter-001-from-the-heights.html" />
+					</navPoint>	</navMap>
+</ncx>

@@ -1,0 +1,1807 @@
+@charset "UTF-8";
+/*
+This file must validate as CSS 2.01 with absolutely no errors
++ http://jigsaw.w3.org/css-validator/
++ http://idpf.org/epub/20/spec/OPS_2.0.1_draft.htm#Section3.0
+
+Theme Name: Galbraith Color EPUB
+Theme URI: http://pressbooks.com/
+Description: A version of the Galbraith Theme, with some color elements. Named for John Kenneth Galbraith, this classic theme is suitable for serious nonfiction, academic nonfiction, and literary fiction. 
+Author: PressBooks (Book Oven Inc.)
+Author URI: http://pressbooks.com
+Copyright 2011-2013 Book Oven Inc. (PressBooks.com) code@pressbooks.com
+Version: 1.0
+*/
+/* titles, headers, captions, pullquotes */
+/* FONTS */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url(assets/Lato-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/Lato-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/Lato-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: url(assets/Lato-Black.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: url(assets/Lato-LightItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: url(assets/Lato-Italic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: url(assets/Lato-BoldItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 900;
+  src: url(assets/Lato-BlackItalic.ttf) format("truetype");
+}
+
+
+/* PRESSBOOKS EPUB FALL-BACK STYLESHEET FOR VARIOUS SPECIAL THINGS 
+in development
+copyright 2013-2014 Book Oven Inc. */
+
+/* HEADERS */
+
+h1, h2, h3, h4, h5, h6 {
+	hyphens: none;
+	-webkit-hyphens: none;
+}
+
+h1.front-matter-title,
+h1.part-title,
+h2.chapter-title,
+h1.back-matter-title {
+	hyphens: none;
+	-webkit-hyphens: none;
+}
+
+/* DISPLAY NONE 
+IN VARIOUS CIRCUMSTANCES 
+========================= */
+
+.display-none {
+	display: none;
+}
+
+/* this ONLY works/is declared in EPUB, ignored in MOBI & PDF */
+
+.epub-display-none {
+    display:none; 
+}
+.web-only {
+  display: none;
+}
+.pdf-only {
+  display: none;
+}
+
+/* This is used in the PDF to generate a short chapter title for running headers 
+in the case that the chapter title is too long. It's spurious in the EPUB, should always be
+display: none; */
+
+h6.short-title {
+  display: none;
+}
+
+.part.invisible {
+	display: none;
+}
+
+div.chapter.numberless h3.chapter-number {
+	display: none;
+}
+
+/* Blank page ... this is to add a blank page in PDF ... can;'t think of a case it is wanted in EPUB.
+hrm.  */
+
+div.blank-page {
+  display:none;
+}
+
+/* SECTION BREAKS */
+
+div.ugc > h3.section-break {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+div.ugc > h3.section-break-space {
+   visibility: hidden;
+   text-align: center;
+   text-indent: 0;
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+div.ugc > h3.section-break-page {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  page-break-after: always;
+}
+
+/* PAGE-BREAKS */
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-before {
+  page-break-before: always;
+}
+
+div.ugc > p.no-indent, 
+p.no-indent {
+  margin-top: 1em !important;
+  text-indent: 0 !important;
+}
+
+sup,
+sup.footnote {
+  font-size: 0.8em;
+  line-height: 1;
+}
+/* GENERAL DEFAULT STYLES
+===========================	*/
+body {
+  font-family: "Baskerville", "Times", serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.4em;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* BODY HEADINGS
+================= */
+/*  BODY HEADERS */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1em;
+  font-weight: normal;
+  text-align: left;
+}
+
+div.ugc h1, div.ugc h2, div.ugc h3, div.ugc h4, div.ugc h5, div.ugc h6 {
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+div.ugc h1 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h2 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h3 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h4 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h5 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h6 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  page-break-after: avoid;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc h1 + p,
+div.ugc h2 + p,
+div.ugc h3 + p,
+div.ugc h4 + p,
+div.ugc h5 + p {
+  margin-top: 0;
+}
+
+/* TITLE PAGE
+================ */
+#title-page {
+  margin: 5%;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+#title-page h1.title {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1.25em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  font-variant: normal;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  font-size: 1.5em;
+  color: inherit;
+  margin-top: 2em;
+}
+
+#title-page h2.subtitle {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
+  font-variant: normal;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  color: inherit;
+  margin-top: 1em;
+  padding-top: 5px;
+}
+
+#title-page h3.author {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  font-variant: normal;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  font-size: 1em;
+  color: inherit;
+  margin-top: 2em;
+}
+
+#title-page div.pb-publogo-wrap {
+  padding-top: 30px;
+  width: 100%;
+  text-align: left;
+}
+
+img.pb-publogo {
+  width: 10%;
+  height: auto;
+  margin-left: 0 !important;
+  margin-right: 90%;
+  margin-bottom: 0;
+  display: block;
+  float: none;
+}
+
+img.pb-publogo-wide {
+  width: 20%;
+  height: auto;
+  margin-left: 0;
+  margin-bottom: 0;
+  display: block;
+}
+
+#title-page h4.publisher {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.75em;
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
+  font-variant: normal;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  color: inherit;
+}
+
+#title-page h5.publisher-city {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.75em;
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
+  font-variant: normal;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  color: inherit;
+  margin-top: -0.5em;
+}
+
+/* FRONT-MATTER STYLING 
+======================= */
+/* COPYRIGHT */
+#copyright-page {
+  margin: 10%;
+}
+
+#copyright-page p {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  text-indent: 0;
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+/* DEDICATION */
+div.dedication {
+  margin-top: 5em;
+  margin: 10%;
+  text-indent: 0;
+}
+
+div.dedication p {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: right;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+div.dedication .front-matter-title-wrap h1.front-matter-title {
+  border-bottom: 0px;
+}
+
+/* EPIGRAPH */
+div.epigraph {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: right;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin: 10%;
+}
+
+div.epigraph .front-matter-title-wrap h1.front-matter-title {
+  border-bottom: 0px;
+}
+
+/* TABLE OF CONTENTS new
+======================= */
+#toc {
+  margin: 5%;
+}
+
+#toc h1 {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin-bottom: 2em;
+  display: block;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid black;
+}
+
+#toc ul {
+  line-height: 1.2em;
+}
+
+#toc ul, #toc li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc li {
+  margin-bottom: 0.25em;
+}
+
+#toc ul .front-matter,
+#toc ul .back-matter {
+  margin-bottom: 0.25em;
+}
+
+#toc a {
+  border: none;
+  color: inherit;
+}
+
+#toc a:after {
+  font-style: normal;
+  text-decoration: none;
+}
+
+/* TOC FRONT-MATTER/BACKMATTER */
+#toc .front-matter {
+  font-style: italic;
+  text-transform: normal;
+}
+
+#toc li.front-matter.introduction span.toc-chapter-title {
+  font-style: normal;
+}
+
+#toc .back-matter {
+  font-style: italic;
+}
+
+#toc .front-matter + .part,
+#toc .front-matter + .chapter,
+#toc .chapter + .back-matter,
+#toc .part + .backmatter {
+  margin-top: 1.3em;
+}
+
+/* TOC PARTS */
+#toc .part .toc-chapter-title {
+  margin: 1.3em 0 1.3em;
+  text-align: left;
+}
+
+/* TOC CHAPTER STYLING  */
+#toc span.toc-chapter-title {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  font-size: 1em;
+  text-align: left;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin-top: 0.5em;
+  display: block;
+}
+
+#toc span.chapter-author {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  display: block;
+  padding-left: 2em;
+  margin-bottom: 0.3em;
+}
+
+#toc span.chapter-subtitle {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  display: block;
+  padding-left: 2em;
+  margin-bottom: 0.3em;
+}
+
+#toc span.chapter-subtitle +
+span.chapter-author {
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* CHAPTER & PART TITLES:
+TITLES, NUMBERS, SUBTITLE, AUTHOR, APHORISM
+FONT-MATTER & BACKMATTER 
+============================================= */
+/* DISPLAY NONE:
+REMOVES CHAPTER NUMBERING 
+ON FRONT-MATTER + BACK-MATTER TITLES */
+.display-none,
+.front-matter-number,
+.back-matter-number {
+  display: none;
+}
+
+.part-title-wrap h3.part-number {
+  /*	display: none; */
+}
+
+.display-none,
+h3.front-matter-number,
+h3.front-matter-number.dedication,
+h3.back-matter-number {
+  display: none;
+}
+
+/* FRONT-MATTER TITLES */
+div.front-matter-title-wrap {
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.front-matter-title-wrap h1.front-matter-title {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin-bottom: 0.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid black;
+}
+
+div.front-matter > div.ugc h4.short-title:first-of-type {
+  visibility: hidden;
+  /* display:none breaks string-set: */
+  font-size: 0;
+  height: 0;
+}
+
+/* PART TITLE */
+div.part-title-wrap {
+  margin-top: 4em;
+  margin-bottom: 2em;
+  margin-left: 15%;
+  margin-right: 15%;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.part-title-wrap > h3.part-number {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: center;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  font-variant: normal;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+div.part-title-wrap > h3.part-number:before {
+  content: "PART ";
+}
+
+div.part-title-wrap > h1.part-title {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* CHAPTER TITLES */
+.chapter-title-wrap {
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  text-align: left;
+}
+
+h3.chapter-number {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  display: block;
+}
+
+h3.chapter-number::before {
+  content: 'Chapter ';
+}
+
+h3.chapter-number::after {
+  content: '. ';
+}
+
+.chapter-title-wrap h2.chapter-title {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+  display: block;
+  margin-bottom: 0.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid black;
+}
+
+div.chapter > div.ugc > h4.short-title:first-of-type {
+  display: none;
+}
+
+/* CHAPTER SUBTITLES, CHAPTER AUTHOR & APHORIMS  */
+div.ugc.chapter-ugc > h2.chapter-subtitle {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin: -1em 0em 2em 0em;
+}
+
+div.ugc.chapter-ugc h2.chapter-author {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  padding-top: 0.2em;
+  margin-bottom: 2em;
+}
+
+div.ugc.chapter-ugc .aphorism {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin-right: 30%;
+  text-indent: 0em;
+  margin-bottom: 2em;
+}
+
+.aphorism cite {
+  display: block;
+}
+
+.aphorism cite::before {
+  content: "–";
+}
+
+/* BACK-MATTER TITLES */
+div.back-matter-title-wrap {
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  hyphens: none;
+}
+
+div.back-matter-title-wrap h1.back-matter-title {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.short-title {
+  display: none;
+}
+
+/*  PARAGRAPHS & BODY TEXT 
+ ========================== */
+p {
+  font-family: "Baskerville", "Times", serif;
+  line-height: 1.4em;
+  margin: 0;
+  text-align: left;
+  text-indent: 1em;
+}
+
+p + p {
+  text-indent: 1em;
+  margin-top: 0;
+}
+
+div.ugc p.indent {
+  line-height: 1.4em;
+  margin: 0;
+  text-align: left;
+  text-indent: 1.5em;
+}
+
+div.ugc p.nonindent,
+p.nonindent,
+.nonindent {
+  line-height: 1.4em;
+  margin: 0;
+  text-align: left;
+  text-indent: 0;
+}
+
+p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+div.front-matter p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+div.back-matter p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+p.hanging-indent,
+.hanging-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+/* TABLES */
+table {
+  font-size: 0.8em;
+  display: block;
+  margin: 25px 0;
+  page-break-inside: avoid;
+}
+
+table caption {
+  text-align: left;
+}
+
+table caption span {
+  font-style: italic;
+}
+
+thead th {
+  font-weight: lighter;
+}
+
+thead th span {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+table span {
+  font-weight: bold;
+}
+
+td {
+  border-bottom: 1px dotted;
+  padding: 5px;
+}
+
+/* DEFINITION LISTS */
+dt {
+  font-weight: lighter;
+  font-size: 0.9em;
+  color: #0197B2;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+dd {
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 0.85em;
+  margin: 20px 0;
+}
+
+dt, dd {
+  display: inline;
+  margin: 0;
+}
+
+dd:after {
+  content: "\A";
+  white-space: pre;
+}
+
+/* ORDERED AND UNORDERED LISTS */
+ul {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+ol {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+li {
+  font-family: "Baskerville", "Times", serif;
+}
+
+div.ucg p + ul {
+  margin-top: 1em;
+}
+
+div.ucg p + ol {
+  margin-top: 1em;
+}
+
+/* BLOCKQUOTES */
+.blockquote,
+blockquote {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  margin: 1em 5% 1em 5%;
+}
+
+.bq_2,
+blockquote.bq_2 {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  font-style: italic;
+  margin: 1em 5% 1em 5%;
+}
+
+.bq_2 p,
+blockquote.bq_2 p {
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+p.bl_nonindent {
+  margin: 0 1em 0;
+  text-indent: 0;
+}
+
+p.bl_indent {
+  margin: 0 1em 0;
+  text-indent: 1.5em;
+}
+
+/* SEPARATORS */
+hr {
+  margin: 10px auto;
+  text-align: center;
+  width: 20%;
+}
+
+/* SPECIAL */
+cite {
+  font-weight: normal;
+}
+
+/* SPECIAL STYLING 
+======================= */
+/* ASIDES, PULLQUOTES */
+aside {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  margin: 2em 10%;
+  padding: 10px 0;
+  text-indent: 0;
+}
+
+.pullquote {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  border: 1px solid;
+  border-width: 1px 0;
+  margin: 15px 15px 15px 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+  display: block;
+}
+
+.pullquote-left {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  border-width: 1px 0;
+  float: left;
+  margin: 15px 15px 15px 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+}
+
+.pullquote-right {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  border: 1px solid;
+  border-width: 1px 0;
+  float: right;
+  margin: 15px 0 15px 15px;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+  display: block;
+}
+
+/* TEXTBOXES & DARK BACKGROUNDS */
+div.textbox {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  border: 1px dotted;
+  margin: 2em 2em 2em 2em;
+  padding: 2em;
+}
+
+div.textbox.shaded {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+}
+
+.textbox p {
+  margin: 10px;
+  padding: 10px;
+}
+
+div.textbox blockquote,
+div.textbox .blockquote {
+  font-size: 0.9em;
+  font-style: normal;
+  padding: 0 0 0 0.1%;
+}
+
+.textbox {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  background-color: #d8d8d8;
+  border-color: #d8d8d8;
+  margin: 1em 0 1em 0;
+}
+
+.textbox.shaded {
+  color: inherit;
+  font-family: "Baskerville", "Times", serif;
+  text-align: justify;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+}
+
+/* FOOTNOTES  */
+.footnotes {
+  display: block;
+  font-size: 0.8em;
+  margin: 1em 0.5em 2em 2em;
+}
+
+.footnotes-wrap {
+  list-style: none;
+  display: block;
+  margin: 10px 10px 10px 40px;
+}
+
+.footnotes p + p {
+  text-indent: 0;
+  text-align: left;
+}
+
+.footnotes p a {
+  display: block;
+  text-decoration: none;
+}
+
+/* IMAGES 
+================== */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.alignleft {
+  float: left;
+  margin: 1em 1em 1em 0;
+}
+
+.alignright {
+  float: right;
+  margin: 1em 0 1em 1em;
+}
+
+.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.aligncenter-test {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: auto;
+}
+
+div.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+img.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+img.alignnone {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+div.wp-caption {
+  height: auto;
+  max-width: 100%;
+  margin: 1em 0;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+div.wp-caption p.wp-caption-text {
+  color: #d61331;
+  font-family: "Baskerville", "Times", serif;
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: italic;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: none;
+  word-spacing: none;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin-top: 0.5em;
+}
+
+div.wp-caption.aligncenter,
+div.wp-caption.alignleft,
+div.wp-caption.alignright,
+div.wp-caption.alignnone {
+  /* Hack for "centering" problems on Kindle, Calibre, ... */
+  width: auto !important;
+}
+
+/* BACK-MATTER 
+=================*/
+/* BIBLIOGRAPHY */
+.bibliography p {
+  text-indent: 0;
+  margin-bottom: 1em;
+}
+
+/* INDEX  */
+.index .ugc {
+  text-align: left;
+}
+
+.index .ugc div {
+  margin-bottom: 4em;
+}
+
+.index .ugc p {
+  font-size: 0.9em;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+  text-align: left;
+}
+
+.index .ugc p.sub-entry {
+  padding-left: 2.5em;
+}
+
+
+/* PRESSBOOKS MOBI FALL-BACK STYLESHEET ... OVERRIDES JUST ABOUT EVERYTHING
+copyright 2013-2014 Book Oven Inc. 
+Version:  2.0 
+*/
+
+/* embedded fonts broken = ornament fonts broken, so replace them in KF8 */
+
+@media amzn-kf8 {
+   .chapter-title-wrap h2.chapter-title::before {
+      content: "";
+   }
+
+   .chapter-title-wrap h2.chapter-title::after {
+      content: "";
+   }
+  
+   #title-page h1.title::before {
+         content: "";
+   }
+   
+   #title-page h1.title::after {
+         content: "";
+   }
+}
+
+
+/* MOBI, oh how we love you mobi ... */ 
+
+/* publogo begone in mobi ... styling not working */
+
+@media amzn-mobi { 
+  
+    div.pb-publogo-wrap {
+        display: none;
+    }
+    img.pb-publogo {
+        display: none;
+    }
+    img.pb-publogo-wide {
+        display: none;
+    }
+}
+
+/* toc page styling */
+
+@media amzn-mobi { 
+  
+   #toc {
+      font-style: normal;
+      font-weight: normal;
+      border: 0px;
+      text-align: left;
+   }
+   #toc h1 {
+        font-size: 1em;
+        font-style: normal;
+        font-weight: normal;    
+   }
+   span.chapter-author {
+        display: none;
+   }
+   span.chapter-subtitle {
+      display: none;
+   }
+   span.toc-chapter-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+       text-align: left;
+   }
+   li.front-matter {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+   }
+   li.part {
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: left;
+      margin-top: 1em;
+   }
+   li.chapter {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+   }
+   li.back-matter {
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: left;
+      margin-top: 1em;
+   }
+   #toc a {
+      font-style: normal;
+      font-weight: normal;
+   }
+   #toc ul .front-matter,
+   #toc ul .back-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .front-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .back-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .part {
+      font-weight: bold;
+      margin-top: 1em;
+   }
+   #toc li {
+       font-style: normal;
+       font-weight: normal;
+       font-size: 0.7em;
+   }
+}
+
+/* this ONLY works/is declared in MOBI, ignored in EPUB & PDF */
+
+@media amzn-mobi { 
+   .mobi-display-none {
+       display:none; 
+    }
+}
+/* standard styling for mobi */
+
+@media amzn-mobi { 
+
+    body {
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+    p,
+    .ugc p,
+    .chapter-ugc p {
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1em;
+    }
+
+    .nonindent,
+    .no-indent,
+    p.nonindent,
+    p.no-indent {
+        font-size: 1em;
+        text-indent: 0;
+        margin-top: 0.5em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    .indent,
+    p.indent {
+        font-size: 1em;
+        text-indent: 1.5em;
+        margin-top: 0em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    .front-matter-ugc p.indent,
+    .front-matter-ugc p.nonindent,
+    .front-matter-ugc p.no-indent {
+        font-size: 1em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+}
+
+/* headers */
+
+@media amzn-mobi { 
+
+    h1 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.4em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h2 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }   
+    h3 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.2em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h4 {
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h5 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h6 {
+        font-weight: normal;
+        font-style: normal;
+        font-size: 0.9em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+}
+ 
+ /* blockquotes & textboxes */
+ @media amzn-mobi { 
+
+    div.textbox {
+      margin: 5%;
+    }
+
+    p.bl_nonindent {
+        margin-left: 10%;
+        text-indent: 0;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    p.bl_indent {
+        margin-left: 10%;
+        text-indent: 1.5em;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    blockquote,
+    .blockquote {
+        margin-left: 10%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .ugc.chapter-ugc.textbox {
+      border-top: 1px solid black;
+      margin-left: 10%;
+      padding-left: 10%;
+      margin-right: 5%;
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      font-size: 0.9em;
+    }
+
+    .ugc.chapter-ugc.textbox p.nonindent,
+    .ugc.chapter-ugc.textbox p.indent {
+        margin-left: 10%;
+        margin-right: 5%;
+        font-size: 0.9em;
+    }
+
+    ul, ol {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}
+
+/* title page */ 
+
+@media amzn-mobi { 
+  
+    h1.title {
+        font-size: 2em;
+        margin-top: 2em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    h2.subtitle {
+        font-size: 1em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    h3.author {
+        font-weight: normal;
+        font-style: normal;
+    }
+    h4.publisher {
+        font-weight: normal;
+        font-style: normal;
+    }
+    h5.publisher-city {
+        font-weight: normal;
+        font-style: normal;
+    }
+
+}
+
+/* FRONT-MATTER STYLING 
+======================= */
+
+@media amzn-mobi { 
+  
+  #copyright-page {
+    margin: 10%;
+    font-style: normal;
+    font-family: normal;
+    text-indent: 0;
+  }
+
+  #copyright-page p {
+    font-size: 0.875em;
+    font-style: normal;
+    font-family: normal;
+    text-indent: 0;
+    margin-bottom: 0.5em;
+  }
+
+}
+
+/* chapter titles */
+
+@media amzn-mobi { 
+
+  div.chapter-title-wrap {
+      font-size: 1.5em;
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+  
+  h1.front-matter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h3.part-number {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h1.part-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h3.chapter-number {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h2.chapter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h2.chapter-subtitle {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center; 
+  }
+  h2.chapter-author {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center; 
+  }
+  h1.back-matter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+   }
+ }
+
+ /* Other styling */ 
+
+@media amzn-mobi { 
+  ul {
+    text-align: right !important;
+  }
+  ol {
+    text-align: right !important;
+  }
+  li {
+    text-align: right !important;
+  }
+}
+
+div.part-title-wrap > .part-number, div.chapter-title-wrap > .chapter-number { display: none !important; } 
+
