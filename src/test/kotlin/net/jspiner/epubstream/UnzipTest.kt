@@ -21,7 +21,7 @@ class UnzipTest {
 
     @Test
     fun unzipFileNotFoundTest() {
-        var epubStream = EpubStream(File(NOT_EXIST_FILE))
+        val epubStream = EpubStream(File(NOT_EXIST_FILE))
         epubStream.unzip()
                 .test()
                 .assertError(NoSuchFileException::class.java)
@@ -29,7 +29,7 @@ class UnzipTest {
 
     @Test
     fun unzipNoErrorTest() {
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
                 .test()
                 .assertComplete()
@@ -37,7 +37,7 @@ class UnzipTest {
 
     @Test
     fun unzipOutputMatchTest() {
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
                 .test()
                 .assertOf {
@@ -58,8 +58,8 @@ class UnzipTest {
 
     @Test
     fun unzipDefinedOutputMatchTest() {
-        var outputPath = "./" + File(EPUB_TEST_FILE).nameWithoutExtension
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val outputPath = "./" + File(EPUB_TEST_FILE).nameWithoutExtension
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip(outputPath)
                 .test()
                 .assertOf {
@@ -80,7 +80,7 @@ class UnzipTest {
 
     @Test
     fun unzipPathTest() {
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
                 .toSingle { epubStream.getExtractedDirectory() }
                 .flatMap { it -> it }
@@ -91,7 +91,7 @@ class UnzipTest {
 
     @Test
     fun withoutUnzipPathTest() {
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.getExtractedDirectory()
                 .map { it -> it.path }
                 .test()
@@ -100,7 +100,7 @@ class UnzipTest {
 
     @Test
     fun withoutUnzipPathAndOutputTest() {
-        var epubStream = EpubStream(File(EPUB_TEST_FILE))
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.getExtractedDirectory()
                 .map { it -> it.path }
                 .test()
