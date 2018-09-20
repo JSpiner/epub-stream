@@ -1,5 +1,5 @@
 # epub-stream
-[![Build Status](https://travis-ci.org/JSpiner/epub-stream.svg?branch=master)](https://travis-ci.org/JSpiner/epub-stream) [![Coverage Status](https://coveralls.io/repos/github/JSpiner/epub-stream/badge.svg?branch=3ad56644a54b89cc05024609cac9b082563deb28)](https://coveralls.io/github/JSpiner/epub-stream?branch=3ad56644a54b89cc05024609cac9b082563deb28)
+[![Build Status](https://travis-ci.org/JSpiner/epub-stream.svg?branch=master)](https://travis-ci.org/JSpiner/epub-stream) [![Coverage Status](https://coveralls.io/repos/github/JSpiner/epub-stream/badge.svg?branch=f2a8f13eb04ad7a639d305916240c78f105dd1c7)](https://coveralls.io/github/JSpiner/epub-stream?branch=f2a8f13eb04ad7a639d305916240c78f105dd1c7)
 
 epub-stream is rxjava-based epub parser
 
