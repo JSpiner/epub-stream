@@ -47,3 +47,7 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+coveralls {
+    jacocoReportPath 'build/reports/jacoco/test/jacocoTestReport.xml'
+    sourceDirs = files(allprojects.sourceSets.main.allSource.srcDirs).files.absolutePath
+}
