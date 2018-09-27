@@ -27,7 +27,7 @@ class ParseAllTest {
     @Test
     fun parseAllTest() {
         epubStream.unzip("hello")
-                .andThen(epubStream.getMimeType())
+                .toSingle { epubStream.getMimeType() }
                 .flatMap { epubStream.getContainer() }
                 .flatMap { epubStream.getOpf() }
                 .flatMap { epubStream.getToc() }
