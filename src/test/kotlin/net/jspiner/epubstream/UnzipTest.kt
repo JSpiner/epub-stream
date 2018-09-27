@@ -17,6 +17,9 @@ class UnzipTest {
         val testFile = File(EPUB_TEST_FILE)
         val outputDirectory = File("./" + testFile.nameWithoutExtension)
         outputDirectory.deleteRecursively()
+
+        val outputDirectory2 = File("./hello")
+        outputDirectory2.deleteRecursively()
     }
 
     @Test
@@ -79,6 +82,18 @@ class UnzipTest {
     }
 
     @Test
+    fun unzipDefinedDifferentOutputPathMatchTest() {
+        val outputPath = "hello"
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
+        epubStream.unzip(outputPath)
+                .toSingle { epubStream.getExtractedDirectory() }
+                .flatMap { it -> it }
+                .map { it -> it.path }
+                .test()
+                .assertValue(outputPath)
+    }
+
+    @Test
     fun unzipPathTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
@@ -108,5 +123,20 @@ class UnzipTest {
 
         unzipOutputMatchTest()
     }
+
+    @Test
+    fun afterUnzipDefinedDifferentOutputPathMatchTest() {
+        val outputPath = "hello"
+        val epubStream = EpubStream(File(EPUB_TEST_FILE))
+        epubStream.unzip(outputPath).subscribe()
+
+        epubStream.unzip()
+                .toSingle { epubStream.getExtractedDirectory() }
+                .flatMap { it -> it }
+                .map { it -> it.path }
+                .test()
+                .assertValue(outputPath)
+    }
+
 
 }
