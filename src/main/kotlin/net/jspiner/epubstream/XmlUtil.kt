@@ -30,7 +30,7 @@ fun Node.getProperty(propertyName: String) : String? {
     return this.attributes.getNamedItem(propertyName)?.nodeValue
 }
 
-fun NodeList.getChildeNode(nodeName: String): Node? {
+fun NodeList.getChildNode(nodeName: String): Node? {
     for (i in 0 until length) {
         val node = item(i)
         if (node.nodeName.equals(nodeName)) return node

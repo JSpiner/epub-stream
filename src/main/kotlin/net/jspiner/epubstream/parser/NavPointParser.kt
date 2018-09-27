@@ -1,7 +1,7 @@
 package net.jspiner.epubstream.parser
 
 import net.jspiner.epubstream.dto.NavPoint
-import net.jspiner.epubstream.getChildeNode
+import net.jspiner.epubstream.getChildNode
 import net.jspiner.epubstream.getProperty
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
@@ -17,7 +17,7 @@ fun parseNavPoint(node: Node): NavPoint {
     return NavPoint(
             node.getProperty("id")!!,
             node.getProperty("playOrder")!!,
-            parseNavLabel(node.childNodes.getChildeNode("navLabel")!!),
-            parseContent(node.childNodes.getChildeNode("content")!!)
+            parseNavLabel(node.childNodes.getChildNode("navLabel")!!),
+            parseContent(node.childNodes.getChildNode("content")!!)
     )
 }
