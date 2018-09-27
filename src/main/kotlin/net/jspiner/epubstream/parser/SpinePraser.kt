@@ -11,10 +11,10 @@ fun parseSpine(document: Document): Spine {
     val node = evaluateNode(document, "/package/spine")!!
     val nodeList = evaluateNodeList(document, "/package/spine/itemref")
     val items = Array(nodeList.length) {
-        val node = nodeList.item(it)
+        val childNode = nodeList.item(it)
         return@Array ItemRef(
-                node.getProperty("idref")!!,
-                node.getProperty("linear") ?: "yes"
+                childNode.getProperty("idref")!!,
+                childNode.getProperty("linear") ?: "yes"
         )
     }
 

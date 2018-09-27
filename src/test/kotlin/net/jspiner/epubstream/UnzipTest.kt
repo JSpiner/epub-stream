@@ -48,12 +48,12 @@ class UnzipTest {
                             File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
                             TrueFileFilter.INSTANCE,
                             TrueFileFilter.INSTANCE
-                    ).map { it -> it.name }
+                    ).map { file -> file.name }
                     val actual = FileUtils.listFiles(
                             File("./" + File(EPUB_TEST_FILE).nameWithoutExtension),
                             TrueFileFilter.INSTANCE,
                             TrueFileFilter.INSTANCE
-                    ).map { it -> it.name }
+                    ).map { file -> file.name }
 
                     assert(expect.containsAll(actual))
                 }
@@ -70,12 +70,12 @@ class UnzipTest {
                             File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
                             TrueFileFilter.INSTANCE,
                             TrueFileFilter.INSTANCE
-                    ).map { it -> it.name }
+                    ).map { file -> file.name }
                     val actual = FileUtils.listFiles(
                             File(outputPath),
                             TrueFileFilter.INSTANCE,
                             TrueFileFilter.INSTANCE
-                    ).map { it -> it.name }
+                    ).map { file -> file.name }
 
                     assert(expect.containsAll(actual))
                 }
