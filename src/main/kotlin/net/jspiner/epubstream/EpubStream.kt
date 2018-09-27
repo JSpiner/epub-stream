@@ -35,20 +35,25 @@ class EpubStream(val file: File) {
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
         if (!file.exists()) return Completable.error(NoSuchFileException(file))
 
-        return Completable.create { emitter ->
-            val inputStream = ZipInputStream(FileInputStream(file))
-            while (true) {
-                val entry: ZipEntry = inputStream.nextEntry ?: break
-                val newFile = File(outputPath + File.separator + entry.name)
+        return if (extractedDirectory == null) {
+            Completable.create { emitter ->
+                val inputStream = ZipInputStream(FileInputStream(file))
+                while (true) {
+                    val entry: ZipEntry = inputStream.nextEntry ?: break
+                    val newFile = File(outputPath + File.separator + entry.name)
 
-                File(newFile.parent).mkdirs()
-                extractFile(inputStream, newFile)
-                inputStream.closeEntry()
+                    File(newFile.parent).mkdirs()
+                    extractFile(inputStream, newFile)
+                    inputStream.closeEntry()
+                }
+                inputStream.close()
+
+                extractedDirectory = File(outputPath)
+                emitter.onComplete()
             }
-            inputStream.close()
-
-            extractedDirectory = File(outputPath)
-            emitter.onComplete()
+        }
+        else {
+            Completable.complete()
         }
     }
 
