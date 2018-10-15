@@ -112,8 +112,8 @@ class EpubStream(val file: File) {
                     .zipWith(getExtractedDirectory(), BiFunction { container: Container, file: File ->
                         file.resolve(container.rootFiles[0].fullPath)
                     })
-                    .map { parseToDocument(it) }
-                    .map { parsePackage(it) }
+                    .map { parseToDocument(it) to it }
+                    .map { parsePackage(it.first, it.second.parent) }
                     .doOnSuccess { this@EpubStream.opf = it }
         }
     }
