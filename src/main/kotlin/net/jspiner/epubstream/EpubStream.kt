@@ -42,9 +42,13 @@ class EpubStream(val file: File) {
                     val entry: ZipEntry = inputStream.nextEntry ?: break
                     val newFile = File(outputPath + File.separator + entry.name)
 
-                    File(newFile.parent).mkdirs()
-                    extractFile(inputStream, newFile)
-                    inputStream.closeEntry()
+                    if (entry.isDirectory) {
+                        newFile.mkdir()
+                    } else {
+                        File(newFile.parent).mkdirs()
+                        extractFile(inputStream, newFile)
+                        inputStream.closeEntry()
+                    }
                 }
                 inputStream.close()
 
