@@ -60,8 +60,8 @@ fun parseMeta(document: Document): HashMap<String, String> {
     val hashMap = HashMap<String, String>()
     for (i in 0 until nodeList.length) {
         hashMap.put(
-                nodeList.item(i).getProperty("name")!!,
-                nodeList.item(i).getProperty("content")!!
+                nodeList.item(i).getProperty("name")?: nodeList.item(i).getProperty("property")!!,
+                nodeList.item(i).getProperty("content")?: nodeList.item(i).nodeValue
         )
     }
     return hashMap
