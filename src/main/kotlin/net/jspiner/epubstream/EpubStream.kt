@@ -123,19 +123,19 @@ class EpubStream(val file: File) {
             Single.just(ncx)
         } else {
             getOpf()
-                    .map { opf ->
-                        val tocId = opf.spine.toc
-                        for (item in opf.manifest.items) {
-                            if (item.id.equals(tocId)) {
-                                return@map item.href
-                            }
+                .map { opf ->
+                    val tocId = opf.spine.toc
+                    for (item in opf.manifest.items) {
+                        if (item.id.equals(tocId)) {
+                            return@map item.href
                         }
-                        throw RuntimeException("$tocId not exist in spine")
                     }
-                    .flatMap { href -> getExtractedDirectory().map { it.resolve(href) } }
-                    .map { parseToDocument(it) }
-                    .map { parseNcx(it) }
-                    .doOnSuccess { this@EpubStream.ncx = it }
+                    throw RuntimeException("$tocId not exist in spine")
+                }
+                .map { File(it) }
+                .map { parseToDocument(it) }
+                .map { parseNcx(it) }
+                .doOnSuccess { this@EpubStream.ncx = it }
         }
     }
 
