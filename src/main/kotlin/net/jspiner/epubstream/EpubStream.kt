@@ -133,8 +133,8 @@ class EpubStream(val file: File) {
                     throw RuntimeException("$tocId not exist in spine")
                 }
                 .map { File(it) }
-                .map { parseToDocument(it) }
-                .map { parseNcx(it) }
+                .map { parseToDocument(it) to it }
+                .map { parseNcx(it.first, it.second.parent) }
                 .doOnSuccess { this@EpubStream.ncx = it }
         }
     }

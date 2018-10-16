@@ -6,11 +6,11 @@ import net.jspiner.epubstream.evaluateNodeList
 import net.jspiner.epubstream.getProperty
 import org.w3c.dom.Document
 
-fun parseNavMap(document: Document): NavMap {
+fun parseNavMap(document: Document, tocPath: String): NavMap {
     val node = evaluateNode(document, "/ncx/navMap")!!
     val nodeList = evaluateNodeList(document, "/ncx/navMap/navPoint")!!
     return NavMap(
             node.getProperty("id"),
-            parseNavPoints(nodeList)
+            parseNavPoints(nodeList, tocPath)
     )
 }
