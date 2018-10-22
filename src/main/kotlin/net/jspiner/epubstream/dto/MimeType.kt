@@ -1,3 +1,5 @@
 package net.jspiner.epubstream.dto
 
-data class MimeType(val type: String)
+import java.io.Serializable
+
+data class MimeType(val type: String) : Serializable

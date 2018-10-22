@@ -1,5 +1,6 @@
 package net.jspiner.epubstream.dto
 
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -21,4 +22,4 @@ data class MetaData(
         var coverage: String?,
         var rights: String?,
         var meta: HashMap<String, String>?
-)
+) : Serializable
