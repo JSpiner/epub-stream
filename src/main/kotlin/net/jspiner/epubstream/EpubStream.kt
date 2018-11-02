@@ -32,7 +32,7 @@ class EpubStream(val file: File) {
     private var ncx: Ncx? = null
 
     fun unzip(outputPath: String = "./" + file.nameWithoutExtension): Completable {
-        if (!file.exists()) return Completable.error(NoSuchFileException(file))
+        if (file.exists().not()) return Completable.error(NoSuchFileException(file))
 
         return if (extractedDirectory == null) {
             Completable.create { emitter ->

@@ -7,7 +7,7 @@ import java.io.File
 
 fun parseContent(node: Node, tocPath: String): Content {
     var src = node.getProperty("src")!!
-    if (!src.startsWith("/")) {
+    if (src.startsWith("/").not()) {
         src = tocPath + File.separator + src
     }
     return Content(

@@ -12,7 +12,7 @@ fun parseManifest(document: Document, manifestPath: String): Manifest {
     val items = Array(nodeList.length) {
         val node = nodeList.item(it)
         var href = node.getProperty("href")!!
-        if (!href.startsWith("/")) {
+        if (href.startsWith("/").not()) {
             href = manifestPath + File.separator + href
         }
 
