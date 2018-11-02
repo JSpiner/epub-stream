@@ -1,7 +1,7 @@
 package net.jspiner.epubstream.dto
 
 import java.io.Serializable
-import java.util.*
+import java.util.Date
 import kotlin.collections.HashMap
 
 // spec : http://dublincore.org/documents/2004/12/20/dces/

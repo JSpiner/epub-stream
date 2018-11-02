@@ -9,7 +9,7 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 fun parseMetadata(document: Document): MetaData {
     val META_PATH = "/package/metadata/"

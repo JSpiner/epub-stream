@@ -1,6 +1,13 @@
 package net.jspiner.epubstream
 
-import net.jspiner.epubstream.dto.*
+import net.jspiner.epubstream.dto.Creator
+import net.jspiner.epubstream.dto.Identifier
+import net.jspiner.epubstream.dto.Item
+import net.jspiner.epubstream.dto.ItemRef
+import net.jspiner.epubstream.dto.Manifest
+import net.jspiner.epubstream.dto.MetaData
+import net.jspiner.epubstream.dto.RoleType
+import net.jspiner.epubstream.dto.Spine
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

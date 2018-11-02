@@ -1,6 +1,13 @@
 package net.jspiner.epubstream
 
-import net.jspiner.epubstream.dto.*
+import net.jspiner.epubstream.dto.Content
+import net.jspiner.epubstream.dto.DocAuthor
+import net.jspiner.epubstream.dto.DocTitle
+import net.jspiner.epubstream.dto.Head
+import net.jspiner.epubstream.dto.Meta
+import net.jspiner.epubstream.dto.NavLabel
+import net.jspiner.epubstream.dto.NavMap
+import net.jspiner.epubstream.dto.NavPoint
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
