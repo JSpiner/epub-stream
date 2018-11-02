@@ -1,6 +1,6 @@
 package net.jspiner.epubstream.dto
 
-//spec : http://www.idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.6
+// spec : http://www.idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.6
 enum class RoleType {
     adp,    // Adapter
     ann,    // Annotator

@@ -48,7 +48,7 @@ fun parseDate(date: String?): Date? {
         try {
             return SimpleDateFormat(format).parse(date)
         } catch (_: ParseException) {
-            //no-op
+            // no-op
         }
     }
     throw ParseException(date, 0)

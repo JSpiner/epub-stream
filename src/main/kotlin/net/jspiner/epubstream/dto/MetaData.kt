@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 
-//spec : http://dublincore.org/documents/2004/12/20/dces/
+// spec : http://dublincore.org/documents/2004/12/20/dces/
 data class MetaData(
     var title: String,
     var creator: Creator?,
