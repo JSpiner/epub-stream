@@ -26,37 +26,37 @@ class UnzipTest {
     fun unzipFileNotFoundTest() {
         val epubStream = EpubStream(File(NOT_EXIST_FILE))
         epubStream.unzip()
-                .test()
-                .assertError(NoSuchFileException::class.java)
+            .test()
+            .assertError(NoSuchFileException::class.java)
     }
 
     @Test
     fun unzipNoErrorTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
-                .test()
-                .assertComplete()
+            .test()
+            .assertComplete()
     }
 
     @Test
     fun unzipOutputMatchTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
-                .test()
-                .assertOf {
-                    val expect = FileUtils.listFiles(
-                            File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
-                    val actual = FileUtils.listFiles(
-                            File("./" + File(EPUB_TEST_FILE).nameWithoutExtension),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
+            .test()
+            .assertOf {
+                val expect = FileUtils.listFiles(
+                    File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
+                val actual = FileUtils.listFiles(
+                    File("./" + File(EPUB_TEST_FILE).nameWithoutExtension),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
 
-                    assert(expect.containsAll(actual))
-                }
+                assert(expect.containsAll(actual))
+            }
     }
 
     @Test
@@ -64,21 +64,21 @@ class UnzipTest {
         val outputPath = "./" + File(EPUB_TEST_FILE).nameWithoutExtension
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip(outputPath)
-                .test()
-                .assertOf {
-                    val expect = FileUtils.listFiles(
-                            File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
-                    val actual = FileUtils.listFiles(
-                            File(outputPath),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
+            .test()
+            .assertOf {
+                val expect = FileUtils.listFiles(
+                    File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
+                val actual = FileUtils.listFiles(
+                    File(outputPath),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
 
-                    assert(expect.containsAll(actual))
-                }
+                assert(expect.containsAll(actual))
+            }
     }
 
     @Test
@@ -86,40 +86,40 @@ class UnzipTest {
         val outputPath = "hello"
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip(outputPath)
-                .toSingle { epubStream.getExtractedDirectory() }
-                .flatMap { it -> it }
-                .map { it -> it.path }
-                .test()
-                .assertValue(outputPath)
+            .toSingle { epubStream.getExtractedDirectory() }
+            .flatMap { it -> it }
+            .map { it -> it.path }
+            .test()
+            .assertValue(outputPath)
     }
 
     @Test
     fun unzipPathTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.unzip()
-                .toSingle { epubStream.getExtractedDirectory() }
-                .flatMap { it -> it }
-                .map { it -> it.path }
-                .test()
-                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+            .toSingle { epubStream.getExtractedDirectory() }
+            .flatMap { it -> it }
+            .map { it -> it.path }
+            .test()
+            .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
     }
 
     @Test
     fun withoutUnzipPathTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.getExtractedDirectory()
-                .map { it -> it.path }
-                .test()
-                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+            .map { it -> it.path }
+            .test()
+            .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
     }
 
     @Test
     fun withoutUnzipPathAndOutputTest() {
         val epubStream = EpubStream(File(EPUB_TEST_FILE))
         epubStream.getExtractedDirectory()
-                .map { it -> it.path }
-                .test()
-                .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
+            .map { it -> it.path }
+            .test()
+            .assertValue("./" + File(EPUB_TEST_FILE).nameWithoutExtension)
 
         unzipOutputMatchTest()
     }
@@ -131,12 +131,10 @@ class UnzipTest {
         epubStream.unzip(outputPath).subscribe()
 
         epubStream.unzip()
-                .toSingle { epubStream.getExtractedDirectory() }
-                .flatMap { it -> it }
-                .map { it -> it.path }
-                .test()
-                .assertValue(outputPath)
+            .toSingle { epubStream.getExtractedDirectory() }
+            .flatMap { it -> it }
+            .map { it -> it.path }
+            .test()
+            .assertValue(outputPath)
     }
-
-
 }

@@ -26,9 +26,9 @@ class MimeTypeTest {
     @Test
     fun mimeTypeGetTest() {
         epubStream.getMimeType()
-                .map { it.type }
-                .test()
-                .assertValue("application/epub+zip")
+            .map { it.type }
+            .test()
+            .assertValue("application/epub+zip")
     }
 
     @Test
@@ -37,9 +37,8 @@ class MimeTypeTest {
         tearDown()
 
         epubStream.getMimeType()
-                .map { it.type }
-                .test()
-                .assertValue("application/epub+zip")
+            .map { it.type }
+            .test()
+            .assertValue("application/epub+zip")
     }
-
 }

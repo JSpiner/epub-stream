@@ -8,7 +8,7 @@ fun parseImage(node: Node?): Image? {
     if (node == null) return null
 
     return Image(
-            node.getProperty("id"),
-            node.getProperty("src")!!
+        node.getProperty("id"),
+        node.getProperty("src")!!
     )
 }

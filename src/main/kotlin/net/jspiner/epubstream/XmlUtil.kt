@@ -10,8 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
 
-
-fun parseToDocument(file: File) : Document {
+fun parseToDocument(file: File): Document {
     val inputSource = InputSource(FileReader(file))
     return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
 }
@@ -26,7 +25,7 @@ fun evaluateNode(document: Document, expression: String): Node? {
     return xPath.compile(expression).evaluate(document, XPathConstants.NODE) as? Node
 }
 
-fun Node.getProperty(propertyName: String) : String? {
+fun Node.getProperty(propertyName: String): String? {
     return this.attributes.getNamedItem(propertyName)?.nodeValue
 }
 

@@ -10,8 +10,8 @@ fun parseCreator(node: Node?): Creator? {
 
     val role = node.getProperty("opf:role")
     return Creator(
-            node.getProperty("opf:file-as"),
-            if (role != null) RoleType.valueOf(role) else null,
-            node.textContent
+        node.getProperty("opf:file-as"),
+        if (role != null) RoleType.valueOf(role) else null,
+        node.textContent
     )
 }

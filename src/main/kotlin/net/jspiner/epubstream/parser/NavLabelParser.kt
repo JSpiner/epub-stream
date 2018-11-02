@@ -6,7 +6,7 @@ import org.w3c.dom.Node
 
 fun parseNavLabel(node: Node): NavLabel {
     return NavLabel(
-            node.childNodes.getChildNode("text")!!.textContent,
-            parseImage(node.childNodes.getChildNode("img"))
+        node.childNodes.getChildNode("text")!!.textContent,
+        parseImage(node.childNodes.getChildNode("img"))
     )
 }

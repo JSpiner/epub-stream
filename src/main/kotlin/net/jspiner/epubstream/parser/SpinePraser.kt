@@ -13,13 +13,13 @@ fun parseSpine(document: Document): Spine {
     val items = Array(nodeList.length) {
         val childNode = nodeList.item(it)
         return@Array ItemRef(
-                childNode.getProperty("idref")!!,
-                childNode.getProperty("linear") ?: "yes"
+            childNode.getProperty("idref")!!,
+            childNode.getProperty("linear") ?: "yes"
         )
     }
 
     return Spine(
-            node.getProperty("toc")!!,
-            items
+        node.getProperty("toc")!!,
+        items
     )
 }

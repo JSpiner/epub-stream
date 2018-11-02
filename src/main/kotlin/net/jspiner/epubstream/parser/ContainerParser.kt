@@ -10,11 +10,11 @@ fun parseContainer(document: Document): Container {
     val nodeList = evaluateNodeList(document, "/container/rootfiles/rootfile")
 
     val list = List(nodeList.length) { it -> nodeList.item(it) }
-            .map { node ->
-                RootFile(
-                        node.getProperty("full-path")!!,
-                        node.getProperty("media-type")!!
-                )
-            }
+        .map { node ->
+            RootFile(
+                node.getProperty("full-path")!!,
+                node.getProperty("media-type")!!
+            )
+        }
     return Container(list.toTypedArray())
 }

@@ -4,6 +4,6 @@ import java.io.Serializable
 
 // spec : http://www.daisy.org/z3986/2005/ncx/
 data class NavLabel(
-        var text: String,
-        var img: Image?
+    var text: String,
+    var img: Image?
 ) : Serializable

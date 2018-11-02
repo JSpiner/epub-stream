@@ -9,9 +9,9 @@ fun parseHead(nodeList: NodeList): Head {
     val metas = Array(nodeList.length) {
         val node = nodeList.item(it)
         Meta(
-                node.getProperty("name")!!,
-                node.getProperty("content")!!,
-                node.getProperty("scheme")
+            node.getProperty("name")!!,
+            node.getProperty("content")!!,
+            node.getProperty("scheme")
         )
     }
     return Head(metas)

@@ -15,9 +15,9 @@ fun parseNavPoints(nodeList: NodeList, tocPath: String): Array<NavPoint> {
 
 fun parseNavPoint(node: Node, tocPath: String): NavPoint {
     return NavPoint(
-            node.getProperty("id")!!,
-            node.getProperty("playOrder")!!,
-            parseNavLabel(node.childNodes.getChildNode("navLabel")!!),
-            parseContent(node.childNodes.getChildNode("content")!!, tocPath)
+        node.getProperty("id")!!,
+        node.getProperty("playOrder")!!,
+        parseNavLabel(node.childNodes.getChildNode("navLabel")!!),
+        parseContent(node.childNodes.getChildNode("content")!!, tocPath)
     )
 }

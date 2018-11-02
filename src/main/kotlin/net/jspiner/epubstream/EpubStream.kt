@@ -19,7 +19,6 @@ import java.nio.file.Files
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
-
 class EpubStream(val file: File) {
 
     private val MIMETYPE_FILE_NAME = "mimetype"
@@ -55,8 +54,7 @@ class EpubStream(val file: File) {
                 extractedDirectory = File(outputPath)
                 emitter.onComplete()
             }
-        }
-        else {
+        } else {
             Completable.complete()
         }
     }
@@ -84,10 +82,10 @@ class EpubStream(val file: File) {
             Single.just(mimeType)
         } else {
             getExtractedDirectory()
-                    .map { it.toPath().resolve(MIMETYPE_FILE_NAME) }
-                    .map { Files.readAllLines(it).joinToString() }
-                    .map { MimeType(it) }
-                    .doOnSuccess { this@EpubStream.mimeType = it }
+                .map { it.toPath().resolve(MIMETYPE_FILE_NAME) }
+                .map { Files.readAllLines(it).joinToString() }
+                .map { MimeType(it) }
+                .doOnSuccess { this@EpubStream.mimeType = it }
         }
     }
 
@@ -96,11 +94,11 @@ class EpubStream(val file: File) {
             Single.just(container)
         } else {
             getMimeType()
-                    .flatMap { getExtractedDirectory() }
-                    .map { it.resolve(CONTAINER_FILE_NAME) }
-                    .map { parseToDocument(it) }
-                    .map { parseContainer(it) }
-                    .doOnSuccess { this@EpubStream.container = it }
+                .flatMap { getExtractedDirectory() }
+                .map { it.resolve(CONTAINER_FILE_NAME) }
+                .map { parseToDocument(it) }
+                .map { parseContainer(it) }
+                .doOnSuccess { this@EpubStream.container = it }
         }
     }
 
@@ -109,12 +107,12 @@ class EpubStream(val file: File) {
             Single.just(opf)
         } else {
             getContainer()
-                    .zipWith(getExtractedDirectory(), BiFunction { container: Container, file: File ->
-                        file.resolve(container.rootFiles[0].fullPath)
-                    })
-                    .map { parseToDocument(it) to it }
-                    .map { parsePackage(it.first, it.second.parent) }
-                    .doOnSuccess { this@EpubStream.opf = it }
+                .zipWith(getExtractedDirectory(), BiFunction { container: Container, file: File ->
+                    file.resolve(container.rootFiles[0].fullPath)
+                })
+                .map { parseToDocument(it) to it }
+                .map { parsePackage(it.first, it.second.parent) }
+                .doOnSuccess { this@EpubStream.opf = it }
         }
     }
 
@@ -142,5 +140,4 @@ class EpubStream(val file: File) {
     fun getFile(): Single<Any> {
         return Single.just(1)
     }
-
 }

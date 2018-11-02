@@ -9,8 +9,8 @@ fun parseDocAuthor(node: Node?): DocAuthor? {
     if (node == null) return null
 
     return DocAuthor(
-            node.getProperty("id"),
-            node.childNodes.getChildNode("text")!!.textContent,
-            parseImage(node.childNodes.getChildNode("img"))
+        node.getProperty("id"),
+        node.childNodes.getChildNode("text")!!.textContent,
+        parseImage(node.childNodes.getChildNode("img"))
     )
 }

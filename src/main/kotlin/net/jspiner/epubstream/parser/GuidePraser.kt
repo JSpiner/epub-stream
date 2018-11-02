@@ -11,9 +11,9 @@ fun parseGuide(document: Document): Guide? {
     val items = Array(nodeList.length) {
         val node = nodeList.item(it)
         return@Array Reference(
-                node.getProperty("type"),
-                node.getProperty("title"),
-                node.getProperty("href")!!
+            node.getProperty("type"),
+            node.getProperty("title"),
+            node.getProperty("href")!!
         )
     }
 

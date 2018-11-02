@@ -7,8 +7,8 @@ import org.w3c.dom.Node
 
 fun parseDocTitle(node: Node): DocTitle {
     return DocTitle(
-            node.getProperty("id"),
-            node.childNodes.getChildNode("text")!!.textContent,
-            parseImage(node.childNodes.getChildNode("img"))
+        node.getProperty("id"),
+        node.childNodes.getChildNode("text")!!.textContent,
+        parseImage(node.childNodes.getChildNode("img"))
     )
 }

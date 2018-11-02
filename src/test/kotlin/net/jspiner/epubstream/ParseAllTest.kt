@@ -27,26 +27,24 @@ class ParseAllTest {
     @Test
     fun parseAllTest() {
         epubStream.unzip("hello")
-                .toSingle { epubStream.getMimeType() }
-                .flatMap { epubStream.getContainer() }
-                .flatMap { epubStream.getOpf() }
-                .flatMap { epubStream.getToc() }
-                .test()
-                .assertOf {
-                    val expect = FileUtils.listFiles(
-                            File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
-                    val actual = FileUtils.listFiles(
-                            File("./hello/"),
-                            TrueFileFilter.INSTANCE,
-                            TrueFileFilter.INSTANCE
-                    ).map { file -> file.name }
+            .toSingle { epubStream.getMimeType() }
+            .flatMap { epubStream.getContainer() }
+            .flatMap { epubStream.getOpf() }
+            .flatMap { epubStream.getToc() }
+            .test()
+            .assertOf {
+                val expect = FileUtils.listFiles(
+                    File(EPUB_TEST_FILE_EXPECTED_DIRECTORY),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
+                val actual = FileUtils.listFiles(
+                    File("./hello/"),
+                    TrueFileFilter.INSTANCE,
+                    TrueFileFilter.INSTANCE
+                ).map { file -> file.name }
 
-                    assert(expect.containsAll(actual))
-                }
+                assert(expect.containsAll(actual))
+            }
     }
-
-
 }

@@ -29,10 +29,10 @@ class ContainerTest {
     @Test
     fun containerGetTest() {
         epubStream.getContainer()
-                .test()
-                .assertValue {
-                    it.rootFiles contentEquals EXPECTED_CONTAINER.rootFiles
-                }
+            .test()
+            .assertValue {
+                it.rootFiles contentEquals EXPECTED_CONTAINER.rootFiles
+            }
     }
 
     @Test
@@ -42,10 +42,9 @@ class ContainerTest {
         tearDown()
 
         epubStream.getContainer()
-                .test()
-                .assertValue {
-                    it.rootFiles contentEquals EXPECTED_CONTAINER.rootFiles
-                }
+            .test()
+            .assertValue {
+                it.rootFiles contentEquals EXPECTED_CONTAINER.rootFiles
+            }
     }
-
 }

@@ -8,7 +8,7 @@ data class Manifest(
 ) : Serializable
 
 data class Item(
-        var id:String,
-        var href:String,
-        var mediaType: String
+    var id: String,
+    var href: String,
+    var mediaType: String
 ) : Serializable

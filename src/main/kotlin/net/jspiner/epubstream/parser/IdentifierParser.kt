@@ -6,8 +6,8 @@ import org.w3c.dom.Node
 
 fun parseIdentifier(node: Node): Identifier {
     return Identifier(
-            node.getProperty("id")!!,
-            node.getProperty("opf:scheme"),
-            node.textContent
+        node.getProperty("id")!!,
+        node.getProperty("opf:scheme"),
+        node.textContent
     )
 }

@@ -11,7 +11,7 @@ fun parseContent(node: Node, tocPath: String): Content {
         src = tocPath + File.separator + src
     }
     return Content(
-            node.getProperty("id"),
-            src
+        node.getProperty("id"),
+        src
     )
 }

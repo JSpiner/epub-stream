@@ -18,9 +18,9 @@ fun parseManifest(document: Document, manifestPath: String): Manifest {
 
         println(href)
         return@Array Item(
-                node.getProperty("id")!!,
-                href,
-                node.getProperty("media-type")!!
+            node.getProperty("id")!!,
+            href,
+            node.getProperty("media-type")!!
         )
     }
 

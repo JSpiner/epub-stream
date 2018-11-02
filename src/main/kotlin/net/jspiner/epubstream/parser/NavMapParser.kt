@@ -10,7 +10,7 @@ fun parseNavMap(document: Document, tocPath: String): NavMap {
     val node = evaluateNode(document, "/ncx/navMap")!!
     val nodeList = evaluateNodeList(document, "/ncx/navMap/navPoint")!!
     return NavMap(
-            node.getProperty("id"),
-            parseNavPoints(nodeList, tocPath)
+        node.getProperty("id"),
+        parseNavPoints(nodeList, tocPath)
     )
 }
